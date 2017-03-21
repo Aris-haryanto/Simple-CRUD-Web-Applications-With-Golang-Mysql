@@ -12,7 +12,7 @@ import (
     _ "github.com/go-sql-driver"
     "github.com/gorilla/mux"
 )
-var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+var templates = template.Must(template.ParseFiles("templates/edit.html", "templates/view.html"))
 
 type Page struct {
 	Title string
@@ -42,7 +42,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
     
     vars := mux.Vars(r)
     fmt.Println(vars["id"]);
-    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/databases") //localhost:3306
+    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/cc-dolcegusto") //localhost:3306
     if err != nil {
         panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
     }
@@ -105,7 +105,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	
-	db, err := sql.Open("mysql", "root@tcp(localhost:3306)/databases") //localhost:3306
+	db, err := sql.Open("mysql", "root@tcp(localhost:3306)/cc-dolcegusto") //localhost:3306
     if err != nil {
         panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
     }
@@ -145,7 +145,7 @@ func updateHandler(w http.ResponseWriter, r *http.Request){
     email := r.FormValue("email")
     address := r.FormValue("address")
 
-    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/databases") //localhost:3306
+    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/cc-dolcegusto") //localhost:3306
     if err != nil {
         panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
     }
@@ -167,7 +167,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
     email := r.FormValue("email")
     address := r.FormValue("address")
 
-    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/databases") //localhost:3306
+    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/cc-dolcegusto") //localhost:3306
     if err != nil {
         panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
     }
@@ -188,7 +188,7 @@ func deleteHandler(w http.ResponseWriter, r *http.Request){
     vars := mux.Vars(r)
     fmt.Println(vars["id"]);
 
-    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/databases") //localhost:3306
+    db, err := sql.Open("mysql", "root@tcp(localhost:3306)/cc-dolcegusto") //localhost:3306
     if err != nil {
         panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
     }
